@@ -1,0 +1,3 @@
+SymPy needs to be installed in order to run this project locally. 
+Please refer to SymPy's guide on installation:
+    https://docs.sympy.org/latest/install.html
