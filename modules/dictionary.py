@@ -1,3 +1,4 @@
+# The special character unicodes are found here: https://www.ssec.wisc.edu/~tomw/java/unicode.html#x0370
 symbols = {"wavelength" : str(chr(955)), 
            "angle_of_bright_fringes" : str(chr(952)) + "_m", 
            "change_in_position_of_bright_fringes" : str(chr(916)) + "y",

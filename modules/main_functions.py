@@ -3,6 +3,8 @@ from sympy.solvers import solve
 from sympy import Symbol
 from sympy import sympify
 
+# The following way of handling import errors is learned here: 
+# https://stackoverflow.com/questions/3131217/error-handling-when-importing-modules
 try: 
     from modules.dictionary import *    # For running in Jupyter Notebook
 except ImportError:
@@ -81,8 +83,8 @@ def update_dictionary_value(input_list):
     return variable_added
               
 def compute(variables, formula, target):
-    """Utilizing SymPy's symbolic algebra functions, given the formula and values of all variables, 
-    write the target variable as a function of other relevant variables;
+    """Utilizing SymPy's symbolic algebra functions <https://docs.sympy.org/latest/modules>, 
+    given the formula and values of all variables, write the target variable as a function of other relevant variables;
     return a string representing the resultant equation.
 
     Keyword arguments:
@@ -95,20 +97,19 @@ def compute(variables, formula, target):
     
     else:        
         for variable in zip(variables.keys(), variables.values()):
-
+            
             if variable[1] != None:
-                index = formula.find(variable[1])
+                index = formula.find(variable[0])
                 
                 if index == 0 or (index > 0 and formula[index - 1] != "_" and not formula[index - 1].isalpha()):
                     formula = formula.replace(variable[0], str(variable[1]))
-                    print(formula)
         
         return solve(sympify(formula), Symbol(target))
 
 def symbolize(equation):
     """Given an equation, replace every replaceable variable name with its symbol as specified by the symbols dictionary 
     (see dictionary.py); return the resultant equation.
-
+    
     Keyword arguments:
     equation -- a string representing the equation of which the variable names are to be replaced by symbols
     """
